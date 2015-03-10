@@ -11,28 +11,27 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.Timer;
 
-public class Crane {
-	
+public class Crane 
+{
 	CANTalon lift;
 	JoystickButton up;
 	JoystickButton down;
+
+
 	public Crane(CANTalon lift)
 	{
 		this.lift = lift;
-		
 	}
+    
+
 	public void lift(Joystick otherStick, int upPort, int downPort, int stopPort)
 	{
-		
 		JoystickButton thing = new JoystickButton(otherStick, upPort);
 		JoystickButton thing2 = new JoystickButton(otherStick, downPort);
 		JoystickButton thing3 = new JoystickButton(otherStick, stopPort);
 		
 		this.up = thing;
 		this.down = thing2;
-
-		
-		
 			
 		while(this.up.get())
 		{
@@ -49,15 +48,14 @@ public class Crane {
 		}
 		
 		lift.set(0);
-		
-		
-		
 	}
+
+
 	public void specialArm(Solenoid s1, Solenoid s2)
 	{
 		s1.set(!s1.get());
 		s2.set(!s2.get());
-		
 	}
+
 
 }
