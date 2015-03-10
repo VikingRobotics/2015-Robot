@@ -18,20 +18,20 @@ public class GetStackt {
 	 Solenoid s3;
 	 Solenoid s6;
 	 Solenoid s7;
-	 int leftAnalPos;
-	 int rightAnalPos;
+	 CANTalon leftAnalog;
+	 CANTalon rightAnalog;
 	 CANTalon t1;
 	 CANTalon t2;
 	 boolean  toggled = false;
 	 
-	 int leftAnal1 =574;
-	 int leftAnal2 = 555;
-	 int leftAnal3 = 362;
-	 int leftAnal4=473;
-	 int rightAnal1 = 578;
-	 int rightAnal2 = 555;
-	 int rightAnal3 = 370;
-	 int rightAnal4 = 478;
+	 private static final int LEFT_ANAL_1 =574;
+	 private static final int LEFT_ANAL_2 = 555;
+	 private static final int LEFT_ANAL_3 = 362;
+	 private static final int LEFT_ANAL_4 = 473;
+	 int RIGHT_ANAL_1 = 578;
+	 int RIGHT_ANAL_2 = 555;
+	 int RIGHT_ANAL_3 = 370;
+	 int RIGHT_ANAL_4 = 478;
 	 
 	JoystickButton b1;
 	JoystickButton b2;
@@ -40,7 +40,7 @@ public class GetStackt {
 	JoystickButton b4;
 	JoystickButton b5;
 	JoystickButton b6;
-	public GetStackt(CANTalon t1, CANTalon t2, Solenoid s2, Solenoid s3, Solenoid s6, Solenoid s7, int leftAnalPos, int rightAnalPos)
+	public GetStackt(CANTalon t1, CANTalon t2, Solenoid s2, Solenoid s3, Solenoid s6, Solenoid s7, CANTalon leftAnalog, CANTalon rightAnalog)
 	{
 		//t1.setFeedbackDevice(AnalogPot());
 	
@@ -48,8 +48,8 @@ public class GetStackt {
 		this.s3 = s3;
 		this.s6 = s6;
 		this.s7 = s7;
-		this.leftAnalPos = leftAnalPos;
-		this.rightAnalPos = rightAnalPos;
+		this.leftAnalog = leftAnalog;
+		this.rightAnalog = rightAnalog;
 		this.t1=t1;
 		this.t2=t2;
 	}
@@ -84,279 +84,54 @@ public class GetStackt {
 		
 	}
 
+	public void ComparePos(CANTalon t2, CANTalon t1, CANTalon pos, int presetPos)
+	{
+		int currentPos = pos.getAnalogInPosition();
+		double speed;
+		if(toggled)
+		{
+			speed = 0.5;
+		}
+		else
+		{
+			speed = 0.75;
+		}
+		if(currentPos <presetPos )
+		{
+			speed = -speed;
+			
+		}
+		t2.set(speed);
+		t1.set(speed);
+	}
 	
-		public void Level1(){
-	
+	public void Level1()
+	{		
+		this.ComparePos(t2, t1, this.leftAnalog, LEFT_ANAL_1);
+		this.ComparePos(t2, t1, this.rightAnalog, RIGHT_ANAL_1);
 		
+	}
 			
-		if(leftAnalPos < leftAnal1){
-				while(leftAnalPos < leftAnal1)
-				{
-				while(leftAnalPos < leftAnal1){
-					if(toggled){
-						t2.set(-.5);
-						t1.set(-.5);
-						}
-					else
-					{
-						t2.set(-.75);
-						t1.set(-.75);
-					}
-						return;
-					}
-					
-				return;
-			}
-		}
-			
-			if(leftAnalPos > leftAnal1){
-				while(leftAnalPos > leftAnal1)
-				{
-					while(leftAnalPos > leftAnal1){
-						t2.set(.75);
-						t1.set(.75);
-						return;
-					} 
-					return;
-				}
+		public void Level2()
+		{
+			this.ComparePos(t2, t1, this.leftAnalog, LEFT_ANAL_2);
+			this.ComparePos(t2, t1, this.rightAnalog, RIGHT_ANAL_2);
 				
-			if(rightAnalPos < rightAnal1){
-				while(rightAnalPos < rightAnal1)
-				{
-					while(rightAnalPos < rightAnal1){
-						if(toggled){
-							t2.set(-.5);
-							t1.set(-.5);
-							}
-						else
-						{
-							t2.set(-.75);
-							t1.set(-.75);
-						}
-						return;
-					}
-					return;
-				}
-					
-			}
-				
-			
-			
-			if(rightAnalPos > rightAnal1){
-					while(leftAnalPos > leftAnal1)
-					{
-						while(rightAnalPos > rightAnal1){
-							t2.set(.75);
-							t1.set(.75);
-							return;
-						}
-						return;
-					}
-				
-			}
 		}
-		}
-			
-		public void Level2(){
 		
-				if(leftAnalPos < leftAnal2){
-					while(leftAnalPos < leftAnal2)
-					{
-						while(leftAnalPos < leftAnal2){
-							if(toggled){
-								t2.set(-.5);
-								t1.set(-.5);
-								}
-							else
-							{
-								t2.set(-.75);
-								t1.set(-.75);
-							}
-							return;
-						}
-						return;
-					}
-					
-				}
-				
-				if(leftAnalPos > leftAnal2){
-					while(leftAnalPos > leftAnal2)
-					{
-						while(leftAnalPos > leftAnal2){
-							t2.set(.75);
-							t1.set(.75);
-							return;
-						}
-						return;
-					}
-					
-				if(rightAnalPos < rightAnal2){
-					while(rightAnalPos < rightAnal2)
-					{
-						while(leftAnalPos < leftAnal1){
-							if(toggled){
-								t2.set(-.5);
-								t1.set(-.5);
-								}
-							else
-							{
-								t2.set(-.75);
-								t1.set(-.75);
-							}
-							return;
-						}
-						return;
-					}
-						
-				}
-					
-				if(rightAnalPos > rightAnal2){
-						while(leftAnalPos > leftAnal2)
-						{
-							while(leftAnalPos > leftAnal1){
-								t2.set(.75);
-								t1.set(.75);
-								return;
-							}
-							return;
-						}
-					}
-				}
-			}
-		
-		public void Level3(){
-		
-			if(leftAnalPos < leftAnal3){
-				while(leftAnalPos < leftAnal3)
-				{
-					while(leftAnalPos < leftAnal3){
-						if(toggled){
-							t2.set(-.5);
-							t1.set(-.5);
-							}
-						else
-						{
-							t2.set(-.75);
-							t1.set(-.75);
-						}
-						return;
-					}
-					return;
-				}
-				
-			}
-			
-			if(leftAnalPos > leftAnal3){
-				while(leftAnalPos > leftAnal3)
-				{
-					while(leftAnalPos > leftAnal3){
-						t2.set(.75);
-						t1.set(.75);
-						return;
-					}
-					return;
-				}
-				
-			if(rightAnalPos < rightAnal3){
-				while(rightAnalPos < rightAnal3)
-				{
-					while(leftAnalPos < leftAnal3){
-						if(toggled){
-							t2.set(-.5);
-							t1.set(-.5);
-							}
-						else
-						{
-							t2.set(-.75);
-							t1.set(-.75);
-						}
-						return;
-					}
-					return;
-				}
-					
-			}
-				
-			if(rightAnalPos > rightAnal3){
-					while(leftAnalPos > leftAnal3)
-					{
-						while(leftAnalPos > leftAnal3){
-							t2.set(.75);
-							t1.set(.75);
-							return;
-						}
-						return;
-					}
-				}
-			
-			}
+		public void Level3()
+		{
+			this.ComparePos(t2, t1, this.leftAnalog, LEFT_ANAL_3);
+			this.ComparePos(t2, t1, this.rightAnalog, RIGHT_ANAL_3);
 		}
+		
+		
 		public void Level4()
 		{
-			if(leftAnalPos < leftAnal4){
-				while(leftAnalPos < leftAnal4)
-				{
-					while(leftAnalPos < leftAnal4){
-						if(toggled){
-							t2.set(-.5);
-							t1.set(-.5);
-							}
-						else
-						{
-							t2.set(-.75);
-							t1.set(-.75);
-						}
-						return;
-					}
-					return;
-				}
-				
-			}
-			
-			if(leftAnalPos > leftAnal4){
-				while(leftAnalPos > leftAnal4)
-				{
-					while(leftAnalPos > leftAnal4){
-						t2.set(.75);
-						t1.set(.75);
-						return;
-					}
-					return;
-				}
-				
-			if(rightAnalPos < rightAnal4){
-				while(rightAnalPos < rightAnal4)
-				{
-					while(leftAnalPos < leftAnal4){
-						if(toggled){
-							t2.set(-.5);
-							t1.set(-.5);
-							}
-						else
-						{
-							t2.set(-.75);
-							t1.set(-.75);
-						}
-						return;
-					}
-					return;
-				}
-					
-			}
-				
-			if(rightAnalPos > rightAnal4){
-					while(leftAnalPos > leftAnal4)
-					{
-						while(leftAnalPos > leftAnal4){
-							t2.set(.75);
-							t1.set(.75);
-							return;
-						}
-						return;
-					}
-				}
-			}			
-		}
+			this.ComparePos(t2, t1, this.leftAnalog, LEFT_ANAL_4);
+			this.ComparePos(t2, t1, this.rightAnalog, RIGHT_ANAL_4);
+		}			
+
 		
 		public void clamp()
 		{
@@ -368,6 +143,7 @@ public class GetStackt {
 			
 		}
 		
+		
 		public void unclamp()
 		{ 
 			toggled = false;
@@ -376,6 +152,8 @@ public class GetStackt {
 			s6.set(true);
 			s7.set(false);	
 		}
+		
+		
 		public void up()
 		{
 			if(toggled)
@@ -388,13 +166,15 @@ public class GetStackt {
 			t2.set(.75);
 			}
 		}
+		
+		
 		public void down()
 		{
-			if(toggled){
-			t1.set(-.5);
-			t2.set(-.5);
+			if(toggled)
+			{
+				t1.set(-.5);
+				t2.set(-.5);
 			}
-			
 			else
 			{
 				t1.set(-.75);

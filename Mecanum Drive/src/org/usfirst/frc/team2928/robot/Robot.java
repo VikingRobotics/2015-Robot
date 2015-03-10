@@ -116,7 +116,7 @@ public class Robot extends SampleRobot {
 
 			Timer.delay(.05);
 			i.takeInTote(otherStick, s0,s1, s4,s5);
-			GetStackt stack = new GetStackt(leftLifter, rightLifter,s2,s3,s6,s7, leftLifter.getAnalogInPosition(), rightLifter.getAnalogInPosition());
+			GetStackt stack = new GetStackt(leftLifter, rightLifter,s2,s3,s6,s7, leftLifter,  rightLifter);
 			stack.Stack(otherStick, stick, 3,2,6,7, 8, 11);
 			//TODO: brent device, bind fred arms to pot, button 4
 			JoystickButton b1 = new JoystickButton(anotherStick, 5);//lifter up
