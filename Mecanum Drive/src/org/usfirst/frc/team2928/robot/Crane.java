@@ -51,6 +51,7 @@ public class Crane {
 		lift.set(0);
 		
 		
+		
 	}
 	public void specialArm(Solenoid s1, Solenoid s2)
 	{

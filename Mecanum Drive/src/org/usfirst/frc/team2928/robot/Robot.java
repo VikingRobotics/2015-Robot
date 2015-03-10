@@ -126,6 +126,7 @@ public class Robot extends SampleRobot {
 		    JoystickButton b5 = new JoystickButton(anotherStick, 9);//toggle
 			JoystickButton b6 = new JoystickButton(anotherStick, 2);//lvl 3
 			JoystickButton b7 = new JoystickButton(anotherStick, 4);//???
+			
 			if(b5.get())
 			{
 				

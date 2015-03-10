@@ -118,6 +118,8 @@ public class Intake {
 		s2.set(true);
 		 s3.set(false);
 		 s.set(false);
+		 
+		 
 		
 	}
 
