@@ -83,6 +83,7 @@ public class GetStackt {
 		t1.set(0);
 		
 	}
+	
 
 	public void ComparePos(CANTalon t2, CANTalon t1, CANTalon pos, int presetPos)
 	{

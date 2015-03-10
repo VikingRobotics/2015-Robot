@@ -186,6 +186,7 @@ public class Robot extends SampleRobot {
 				double fixedX =0;
 				double fixedY =0;
 				double fixedZ = 0;
+				
 				if(stick.getZ()<-.35)
 				{
 					fixedZ =pt2-.35;
