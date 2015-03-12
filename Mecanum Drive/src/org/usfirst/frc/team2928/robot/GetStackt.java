@@ -28,6 +28,7 @@ public class GetStackt {
 	 private static final int LEFT_ANAL_2 = 555;
 	 private static final int LEFT_ANAL_3 = 362;
 	 private static final int LEFT_ANAL_4 = 473;
+	 
 	 int RIGHT_ANAL_1 = 578;
 	 int RIGHT_ANAL_2 = 555;
 	 int RIGHT_ANAL_3 = 370;
@@ -104,6 +105,10 @@ public class GetStackt {
 		}
 		t2.set(speed);
 		t1.set(speed);
+		/*int rightAnalVal = t2.getAnalogInPosition();
+		int leftAnalVal = t1.getAnalogInPosition();
+		t2.set(.5);
+		t1.set(t2.get() + (.7*(leftAnalVal-rightAnalVal - 5)));*/
 	}
 	
 	public void Level1()

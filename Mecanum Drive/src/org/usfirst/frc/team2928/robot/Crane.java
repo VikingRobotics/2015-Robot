@@ -21,43 +21,49 @@ public class Crane {
 		this.lift = lift;
 		
 	}
-	public void lift(Joystick otherStick, int upPort, int downPort, int stopPort)
+	public void up(double someValue)
 	{
 		
-		JoystickButton thing = new JoystickButton(otherStick, upPort);
-		JoystickButton thing2 = new JoystickButton(otherStick, downPort);
-		JoystickButton thing3 = new JoystickButton(otherStick, stopPort);
 		
-		this.up = thing;
-		this.down = thing2;
-
-		
-		
+		if(someValue>.5)
+		{
+			lift.set(.5);
 			
-		while(this.up.get())
-		{
-			lift.set(1);
-			return;
 		}
-		
-		lift.set(0);
-		
-		while(this.down.get())
+		else
 		{
-			lift.set(-1);
-			return;
+		
+		lift.set(0);	
 		}
-		
-		lift.set(0);
-		
 		
 		
 	}
-	public void specialArm(Solenoid s1, Solenoid s2)
+	public void down(double someValue)
 	{
-		s1.set(!s1.get());
-		s2.set(!s2.get());
+		lift.set(0);
+		if(someValue<-.5)
+		{
+		lift.set(-.5);
+			
+			
+		}
+		else
+		{
 		
+		lift.set(0);
+		}
 	}
+	public void specialArmOpen(Solenoid s0, Solenoid s4)
+	{
+		s0.set(true);
+		s4.set(false);
+	}
+	public void specialArmClosed(Solenoid s0, Solenoid s4)
+	{
+		s0.set(false);
+		s4.set(true);
+	
+	}
+	
 
 }

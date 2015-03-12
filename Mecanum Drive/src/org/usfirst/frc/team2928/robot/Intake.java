@@ -31,7 +31,7 @@ public class Intake {
 	
 
 
-	public void takeInTote(Joystick op, Solenoid s, Solenoid s2, Solenoid s3, Solenoid s4)
+	public void takeInTote(Joystick op,  Solenoid s2,  Solenoid s4)
 	{
 		
 		
@@ -42,8 +42,7 @@ public class Intake {
 			while(op.getTrigger() == true)
 			 {
 				 s2.set(true);
-				 s3.set(false);
-				 s.set(false);
+				 
 				 s4.set(true);
 				 
 				return;
@@ -51,8 +50,7 @@ public class Intake {
 			 
 			 
 				 s2.set(false);
-				 s.set(true);
-				 s3.set(true);
+				
 				 s4.set(false);
 			return;
 		}
@@ -68,8 +66,7 @@ public class Intake {
 					while(op.getTrigger() == true)
 					 {
 						 s2.set(true);
-						 s3.set(false);
-						 s.set(false);
+						
 						 s4.set(true);
 						 
 						return;
@@ -77,8 +74,7 @@ public class Intake {
 					 
 					 
 						 s2.set(false);
-						 s.set(true);
-						 s3.set(true);
+						
 						 s4.set(false);
 					return;
 				}
@@ -91,14 +87,12 @@ public class Intake {
 		 {
 			s4.set(true);
 			s2.set(true);
-			 s3.set(false);
-			 s.set(false);
+			
 			
 			return;
 		 }
 			 s2.set(false);
-			 s.set(true);
-			 s3.set(true);
+			
 			 s4.set(false); 
 	}
 	public void in(int buttonNum,Joystick j)
@@ -118,8 +112,6 @@ public class Intake {
 		s2.set(true);
 		 s3.set(false);
 		 s.set(false);
-		 
-		 
 		
 	}
 

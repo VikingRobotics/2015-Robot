@@ -40,7 +40,6 @@ public class Robot extends SampleRobot {
 	final Solenoid s6 = new Solenoid(6); //l stacker open
 	final Solenoid s7 = new Solenoid(7); //l stacker close
 	
-	
 
 	
 	
@@ -48,7 +47,7 @@ public class Robot extends SampleRobot {
 	JoystickButton up = new JoystickButton(otherStick,3);//Crane down
 
 	final Intake i = new Intake(talon1, talon2);
-	final Crane crane = new Crane(craneTalon);
+	final Crane crane = new Crane(brentCrane);
 	
 	// The channel on tfhe driver station that the joystick is connected to
 	final int joystickChannel	= 0;
@@ -113,9 +112,9 @@ public class Robot extends SampleRobot {
 
 
 //solenoidSwitch(new Joystick(0), s1);
-
+			
 			Timer.delay(.05);
-			i.takeInTote(otherStick, s0,s1, s4,s5);
+			i.takeInTote(otherStick, s1, s5);
 			GetStackt stack = new GetStackt(leftLifter, rightLifter,s2,s3,s6,s7, leftLifter,  rightLifter);
 			stack.Stack(otherStick, stick, 3,2,6,7, 8, 11);
 			//TODO: brent device, bind fred arms to pot, button 4
@@ -133,16 +132,18 @@ public class Robot extends SampleRobot {
 				stack.unclamp();
 			
 			}
+			
 			else if(!b5.get())
 			{
 				stack.clamp();
 				
 			}
+			
 			if(b2.get())
 			{
 				stack.up();
 			}
-			else if(b1.get())
+			if(b1.get())
 			{
 				stack.down();
 			}
@@ -165,8 +166,31 @@ public class Robot extends SampleRobot {
 			{
 				stack.Level4();
 			}
-
-
+			if(anotherStick.getX()>.5)
+			{
+				crane.up(anotherStick.getX());	
+			}
+			else if(anotherStick.getX()<=.5 && anotherStick.getX() >= -.5)
+			{
+				brentCrane.set(0);
+			}
+			if(anotherStick.getX()<-.5)
+			{
+			crane.down(anotherStick.getX());
+			}
+			else if(anotherStick.getX()<=.5 && anotherStick.getX() >= -.5)
+			{
+				brentCrane.set(0);
+			}
+			if(b7.get())
+			{
+				crane.specialArmOpen(s0, s4);
+			}
+			else if(!b7.get())
+			{
+				crane.specialArmClosed(s0,s4);
+			}
+			
 			if((stick.getX() > .2 || stick.getX()< -.2) || (stick.getY()>.2 || stick.getY() <-.2) || (stick.getZ()>.35 || stick.getZ() <-.35))
 			{
 				frontLeftChannel.set(frontLeftVoltage);
@@ -221,7 +245,7 @@ public class Robot extends SampleRobot {
 				//System.out.println(anotherStick.getX());
 				
 
-				robotDrive.mecanumDrive_Cartesian(-fixedX, -fixedY,-fixedZ , 0);
+				robotDrive.mecanumDrive_Cartesian(-fixedX, -fixedY,-fixedZ/2 , 0);
 				
 			}
 			
