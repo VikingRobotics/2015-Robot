@@ -27,7 +27,7 @@ public class Crane {
 		
 		if(someValue>.5)
 		{
-			lift.set(.5);
+			lift.set(.85);
 			
 		}
 		else
@@ -43,7 +43,7 @@ public class Crane {
 		lift.set(0);
 		if(someValue<-.5)
 		{
-		lift.set(-.5);
+		lift.set(-.75);
 			
 			
 		}

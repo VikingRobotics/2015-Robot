@@ -89,10 +89,11 @@ public class GetStackt {
 	public void ComparePos(CANTalon t2, CANTalon t1, CANTalon pos, int presetPos)
 	{
 		int currentPos = pos.getAnalogInPosition();
+	
 		double speed;
 		if(toggled)
 		{
-			speed = 0.5;
+			speed = 0.6;
 		}
 		else
 		{
@@ -103,8 +104,9 @@ public class GetStackt {
 			speed = -speed;
 			
 		}
-		t2.set(speed);
+		
 		t1.set(speed);
+		t2.set(speed);
 		/*int rightAnalVal = t2.getAnalogInPosition();
 		int leftAnalVal = t1.getAnalogInPosition();
 		t2.set(.5);
@@ -164,12 +166,12 @@ public class GetStackt {
 		{
 			if(toggled)
 			{
-			t1.set(.5);
-			t2.set(.5);
-			}
-			else{
 			t1.set(.75);
 			t2.set(.75);
+			}
+			else{
+			t1.set(.8);
+			t2.set(.8);
 			}
 		}
 		
@@ -178,13 +180,14 @@ public class GetStackt {
 		{
 			if(toggled)
 			{
-				t1.set(-.5);
-				t2.set(-.5);
-			}
-			else
-			{
 				t1.set(-.75);
 				t2.set(-.75);
+			}
+			
+			else
+			{
+				t1.set(-.8);
+				t2.set(-.8);
 			}
 		}
 

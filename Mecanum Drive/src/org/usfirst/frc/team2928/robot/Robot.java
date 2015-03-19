@@ -74,9 +74,45 @@ public class Robot extends SampleRobot {
 		Timer timer = new Timer();
 		timer.start();
 		
+	
 		while(isAutonomous() && isEnabled())
 		{	
-			while(timer.get() < 3.5)
+			
+			while(timer.get() < 3.15)
+			{
+			leftLifter.set(-1);
+			rightLifter.set(-1);
+			frontLeftChannel.set(-.5);
+			frontRightChannel.set(-.5);
+			rearLeftChannel.set(-.5);
+			rearRightChannel.set(-.5);
+			}
+		
+			frontLeftChannel.set(0);
+			frontRightChannel.set(0);
+			rearLeftChannel.set(0);
+			rearRightChannel.set(0);
+			leftLifter.set(0);
+			rightLifter.set(0);
+	
+	
+		}
+			//TODO: use smartdashboard to 2 auto codes
+		/* 
+		 //Crane and drive Auto (Not Yet Working)
+		  while(isAutonomus() && isEnabled())
+		  {
+		  s0.set(!s0.get());
+		  s4.set(!s4.get()):
+		  while(timer.get() < 2)
+		  {
+		  brentCrane.set(1);
+		  }
+		  brentCrane.set(0);
+		  timer.stop();
+		  timer.start();
+		
+			while(timer.get() < 3)
 			{
 			
 			frontLeftChannel.set(-.5);
@@ -90,6 +126,25 @@ public class Robot extends SampleRobot {
 			rearLeftChannel.set(0);
 			rearRightChannel.set(0);
 		}
+		 }*/
+		
+		 //Crane Only auto
+		   
+		/*    
+		  while(isAutonomous() && isEnabled())
+		  {
+		  s0.set(false);
+		  s4.set(true);
+		  while(isAutonomous())
+		  {
+		  brentCrane.set(-1);
+		  }
+		  brentCrane.set(0);
+		  timer.stop();
+		  return;
+		  }
+		    */
+		
 		}
 
 	
